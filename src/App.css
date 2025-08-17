@@ -1,10 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +32,33 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.sideContainer
+{
+  height: 100vh;
+
+  border: 1px solid white;
+  
+  padding: 1em;
+}
+
+.messagesContainer
+{
+  height: 100vh;
+
+  border: 1px solid white;
+
+  padding: 1em;
+  width: 100%;
+}
+
+.tabsContainer
+{
+
+}
+
+.main
+{
+  display: flex;
 }
