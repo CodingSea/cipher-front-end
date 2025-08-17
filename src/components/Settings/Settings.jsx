@@ -16,25 +16,25 @@ function Settings()
     function handleChange(event)
     {
         setFormData({ ...formData, [event.target.name]: event.target.value });
+        console.log(formData);
     }
 
     async function handleUpdateProfile(event)
     {
         event.preventDefault();
 
-        const response = await updateUser(currentUserID, formData);
+        const response = await updateUser(currentUserID, formData); 
     }
 
-    async function f()
+    async function getUserData()
     {
         const u = await getUser(currentUserID);
-        console.log(u.username);
         setFormData({ profileImage: "", username: u.username });
     }
 
     useEffect(() =>
     {
-        f();
+        getUserData();
     }, [])
 
     return (
@@ -43,7 +43,7 @@ function Settings()
 
             <form onSubmit={handleUpdateProfile}>
                 <label htmlFor="profileImage">Profile Image: </label>
-                <input name="profileImage" type="file" />
+                <input name="profileImage" type="file" onChange={handleChange} />
 
                 <br />
 
