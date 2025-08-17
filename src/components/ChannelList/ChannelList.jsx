@@ -3,7 +3,9 @@ import React from 'react'
 function ChannelList()
 {
     return (
-        <div>ChannelList</div>
+        <div className='channelList'>
+            ChannelList
+        </div>
     )
 }
 

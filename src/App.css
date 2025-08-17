@@ -37,10 +37,9 @@
 .sideContainer
 {
   height: 100vh;
-
   border: 1px solid white;
-  
   padding: 1em;
+  display: flex;
 }
 
 .messagesContainer
@@ -53,9 +52,9 @@
   width: 100%;
 }
 
-.tabsContainer
+.tabsContainer, .channelList
 {
-
+  padding: 0.5em;
 }
 
 .main

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./App.css";
-import SideContainer from '../components/SideContainer/SideContainer';
-import MessagesContainer from '../components/MessagesContainer/MessagesContainer';
+import SideContainer from './components/SideContainer/SideContainer';
+import MessagesContainer from './components/MessagesContainer/MessagesContainer';
 
 function App()
 {
