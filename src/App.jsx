@@ -36,9 +36,10 @@ function App()
         <Routes>
           <Route path="/login" element={ <LoginForm onLogin={ handleLogin } /> } />
           <Route path="/signup" element={ <SignUp /> } />
-          <ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>
+          <Route path='Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
+
     </>
   )
 }
