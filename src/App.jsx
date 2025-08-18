@@ -39,7 +39,6 @@ function App()
           <ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>
         </Routes>
       </BrowserRouter>
-
     </>
   )
 }
