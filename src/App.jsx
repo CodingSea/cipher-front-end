@@ -32,9 +32,10 @@ function App()
   return (
     <>
       <BrowserRouter>
+        { token ? <LogoutButton onLogout={ handleLogout } /> : null }
         <Routes>
-        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={ <LoginForm onLogin={ handleLogin } /> } />
+          <Route path="/signup" element={ <SignUp /> } />
           <ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>
         </Routes>
       </BrowserRouter>
