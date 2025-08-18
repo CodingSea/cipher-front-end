@@ -40,6 +40,7 @@
   border: 1px solid white;
   padding: 1em;
   display: flex;
+  max-width: 60vh;
 }
 
 .messagesContainer
@@ -73,7 +74,7 @@
 
 .server
 {
-  background-color: darkgray;
+  
   border-radius: 0.5em;
   padding: 5px;
   margin: 0.5em;

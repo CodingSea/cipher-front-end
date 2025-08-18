@@ -6,8 +6,6 @@ function MessagesContainer()
     return (
         <div className='messagesContainer'>
             <p>MessagesContainer</p>
-            
-            <Settings />
         </div>
     )
 }

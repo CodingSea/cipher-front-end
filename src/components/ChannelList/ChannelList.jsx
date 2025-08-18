@@ -1,10 +1,24 @@
 import React from 'react'
 
-function ChannelList()
+function ChannelList({ currentServer })
 {
     return (
         <div className='channelList'>
-            ChannelList
+            <p>ChannelList</p>
+            {
+                currentServer
+                ?
+                currentServer.channels.map((channel, index) =>
+                {
+                    return (
+                        <div key={index}>
+                            <p>{channel.title}</p>
+                        </div>
+                    )
+                })
+                :
+                null
+            }
         </div>
     )
 }

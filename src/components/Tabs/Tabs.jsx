@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { getAllServers, createServer } from '../../../lib/serverApi';
 
-function Tabs()
+function Tabs({ setCurrentServer })
 {
     const [servers, setServers] = useState([]);
     const [formData, setFormData] = useState(
@@ -23,13 +23,18 @@ function Tabs()
 
         const createdServer = await createServer(formData);
         console.log(createdServer);
-        
+
     }
 
     async function listServers()
     {
         const serverList = await getAllServers();
         setServers(serverList.data);
+    }
+
+    function selectServerClick(server)
+    {
+        setCurrentServer(server);
     }
 
     useEffect(() =>
@@ -56,17 +61,17 @@ function Tabs()
 
             {
                 servers.length
-                ?
-                servers.map((server, index) => 
-                {
-                    return (
-                        <div key={index} className='server'>
-                            <p>{server.title}</p>
-                        </div>
-                    )
-                })
-                :
-                null
+                    ?
+                    servers.map((server, index) => 
+                    {
+                        return (
+                            <div key={ index } className='server'>
+                                <button onClick={() => selectServerClick(server)}>{ server.title }</button>
+                            </div>
+                        )
+                    })
+                    :
+                    null
             }
 
         </div>
