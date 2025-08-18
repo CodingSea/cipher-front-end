@@ -3,7 +3,9 @@ import React from 'react'
 function MessagesDisplay()
 {
     return (
-        <div>MessagesDisplay</div>
+        <div>
+            <p>MessagesDisplay</p>
+        </div>
     )
 }
 
