@@ -5,6 +5,7 @@ import { createChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
 function ChannelList({ currentServer, setCurrentServer, setServers, listServers })
 {
     const [isOpen, setIsOpen] = useState(false);
+    const [channels, setChannels] = useState([])
     const [formData, setFormData] = useState
         (
             {
@@ -33,11 +34,11 @@ function ChannelList({ currentServer, setCurrentServer, setServers, listServers 
         const serverChannels = await getAllChannelsInServer(currentServer._id);
         console.log(serverChannels);
         
-        let cs = currentServer;
+        let cs = {...currentServer};
         cs.channels = serverChannels.data;
-        console.log(cs);
         setCurrentServer(cs);
     }
+    
 
 
     return (
