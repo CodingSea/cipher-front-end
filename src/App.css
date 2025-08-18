@@ -61,3 +61,11 @@
 {
   display: flex;
 }
+
+.newServerForm
+{
+  background-color: darkgray;
+  padding: 1em;
+  border-radius: 0.5em;
+  text-align: center;
+}
