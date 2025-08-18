@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { getAllServers, createServer } from '../../../lib/serverApi';
 
-function Tabs({ setCurrentServer })
+function Tabs({ setCurrentServer, servers, listServers })
 {
-    const [servers, setServers] = useState([]);
-    const [formData, setFormData] = useState(
+    const [isOpen, setIsOpen] = useState(false);
+    const [formData, setFormData] = useState
+    (
         {
             title: ""
         }
@@ -14,7 +15,6 @@ function Tabs({ setCurrentServer })
     function handleChange(event)
     {
         setFormData({ ...formData, [event.target.name]: event.target.value });
-        console.log(formData);
     }
 
     async function handleCreateServer(event)
@@ -22,14 +22,9 @@ function Tabs({ setCurrentServer })
         event.preventDefault();
 
         const createdServer = await createServer(formData);
-        console.log(createdServer);
+        setIsOpen(false);
 
-    }
-
-    async function listServers()
-    {
-        const serverList = await getAllServers();
-        setServers(serverList.data);
+        listServers();
     }
 
     function selectServerClick(server)
@@ -44,12 +39,11 @@ function Tabs({ setCurrentServer })
 
     return (
         <div className='tabsContainer'>
-            <p>Tabs</p>
+            <h3>Tabs</h3>
 
-            <Popup trigger=
-                {
-                    <button>+</button>
-                }
+            <button onClick={() => setIsOpen(true)}>+</button>
+
+            <Popup open={isOpen}
                 modal nested>
                 <form className='newServerForm' onSubmit={ handleCreateServer }>
                     <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
@@ -65,7 +59,7 @@ function Tabs({ setCurrentServer })
                     servers.map((server, index) => 
                     {
                         return (
-                            <div key={ index } className='server'>
+                            <div key={ index } className='serverCard'>
                                 <button onClick={() => selectServerClick(server)}>{ server.title }</button>
                             </div>
                         )
