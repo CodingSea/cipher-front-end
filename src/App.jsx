@@ -2,12 +2,12 @@ import React from 'react';
 import "./App.css";
 import { jwtDecode } from 'jwt-decode'
 import { BrowserRouter, Routes, Route } from 'react-router';
-import SideContainer from '../components/SideContainer/SideContainer';
-import MessagesContainer from '../components/MessagesContainer/MessagesContainer';
-import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
-import LogoutButton from '../components/LogoutButton/LogoutButton';
-import LoginForm from '../components/LoginForm/LoginForm';
-import SignUp from '../components/SignupForm/SignupForm';
+import SideContainer from './components/SideContainer/SideContainer';
+import MessagesContainer from './components/MessagesContainer/MessagesContainer';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import LogoutButton from './components/LogoutButton/LogoutButton';
+import LoginForm from './components/LoginForm/LoginForm';
+import SignUp from './components/SignupForm/SignupForm';
 
 function App()
 {
