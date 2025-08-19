@@ -24,7 +24,7 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel 
     }, [messages])
 
     return (
-        <div>
+        <div className='messageDisplay'>
             {
                 msgs.length
                     ?
