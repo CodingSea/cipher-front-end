@@ -11,7 +11,9 @@ import SignUp from './components/SignupForm/SignupForm';
 
 function App()
 {
-  const [messages, setMessages] = useState([{}]);
+  const [messages, setMessages] = useState([]);
+  const [currentServer, setCurrentServer] = useState();
+  const [currentChannel, setCurrentChannel] = useState();
 
   const [token, setToken] = useState(localStorage.getItem('token'))
 
@@ -40,8 +42,8 @@ function App()
           <Route path='/Home' element={
             <ProtectedRoute>
               <div className='main'>
-                <SideContainer setMessages={ setMessages } />
-                <MessagesContainer messages={ messages } setMessages={ setMessages } />
+                <SideContainer setMessages={ setMessages } currentServer={currentServer} setCurrentServer={setCurrentServer} setCurrentChannel={setCurrentChannel} />
+                <MessagesContainer messages={ messages } setMessages={ setMessages } currentServer={currentServer} currentChannel={currentChannel}  />
               </div>
             </ProtectedRoute> } />
         </Routes>

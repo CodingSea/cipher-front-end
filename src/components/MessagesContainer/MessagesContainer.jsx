@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Settings from '../Settings/Settings'
+import MessagesDisplay from '../MessagesDisplay/MessagesDisplay'
 
-function MessagesContainer()
+function MessagesContainer({ messages, setMessages, currentServer, setCurrentServer, currentChannel })
 {
+
     return (
         <div className='messagesContainer'>
-            <p>MessagesContainer</p>
+            <MessagesDisplay messages={ messages } setMessages={ setMessages } currentServer={currentServer} currentChannel={currentChannel} />
         </div>
     )
 }

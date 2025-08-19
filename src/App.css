@@ -79,3 +79,45 @@
   padding: 5px;
   margin: 0.5em;
 }
+
+/* The following code is taken from the internet */
+.messages-display
+{
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message
+{
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #004464;
+}
+
+.message-header
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #46ffa3;
+}
+
+.sender
+{
+    font-weight: bold;
+}
+
+.timestamp
+{
+    color: #999;
+}
+
+.message-text
+{
+    margin-top: 5px;
+}
