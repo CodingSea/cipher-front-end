@@ -26,7 +26,6 @@ function App()
   if (token)
   {
     const decodedToken = jwtDecode(token)
-    console.log(decodedToken)
   }
 
   return (
@@ -36,7 +35,7 @@ function App()
         <Routes>
           <Route path="/auth/login" element={ <LoginForm onLogin={ handleLogin } /> } />
           <Route path="/auth/signup" element={ <SignUp /> } />
-          <Route path='Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
+          <Route path='/Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
 

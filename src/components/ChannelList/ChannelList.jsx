@@ -22,6 +22,8 @@ function ChannelList({ currentServer, setCurrentServer, setServers, listServers 
     {
         event.preventDefault();
 
+        console.log()
+
         const createdChannel = await createChannel(currentServer._id, formData);
 
         setIsOpen(false);
