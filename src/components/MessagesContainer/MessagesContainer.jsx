@@ -5,8 +5,8 @@ import { useState,useEffect } from 'react';
 import { getUser } from '../../../lib/userApi';
 
 function MessagesContainer(){
-    const [friendsList,setFriendsList]=useState([])
-
+    const [friendsList,setFriendsList]=useState([]);
+    const [showBtn,setShowBtn]= useState(false);
     async function getFriends() {
         const token =localStorage.getItem("token");
         const userId = jwtDecode(token);
@@ -19,14 +19,25 @@ function MessagesContainer(){
     
     return (
         <div className='messagesContainer'>
-            <p>MessagesContainer</p>
+            <p>MessagesContainer</p> 
             {
                 friendsList.map((friend,index)=>{
-                    return (
-                        <div key={index}>
+                    return (<>
+                        <div key={index} onMouseOver={()=>{setShowBtn(true)}}  onMouseLeave={()=>{setShowBtn(false)}} >
+                            
                             <p>{friend.username}</p>
+                            {
+                                showBtn
+                                ?<>
+                                <button/>{/* here will be the Update btn */}
+                                <button/>{/* here will be the delete btn */}
+                                </>
+                                :
+                                null
+                            }
                         </div>
-                    )
+
+                   </> )
                 })
             }
         </div>
