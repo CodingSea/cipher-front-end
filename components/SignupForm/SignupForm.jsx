@@ -14,10 +14,10 @@ function SignUp() {
         username,
         password
       })
-      
+      alert('User registered, please login')
       navigate('/login')
     } catch (err) {
-        console.log(err)
+      console.log(err)
     }
   }
 
