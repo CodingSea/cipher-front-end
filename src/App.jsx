@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./App.css";
 import { jwtDecode } from 'jwt-decode'
 import { BrowserRouter, Routes, Route } from 'react-router';
@@ -32,12 +32,14 @@ function App()
   return (
     <>
       <BrowserRouter>
+        { token ? <LogoutButton onLogout={ handleLogout } /> : null }
         <Routes>
-        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-          <Route path="/signup" element={<SignUp />} />
-          <ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>
+          <Route path="/login" element={ <LoginForm onLogin={ handleLogin } /> } />
+          <Route path="/signup" element={ <SignUp /> } />
+          <Route path='Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
+
     </>
   )
 }
