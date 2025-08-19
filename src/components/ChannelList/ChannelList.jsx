@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Popup from 'reactjs-popup';
 import { createChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
 
-function ChannelList({ currentServer, setCurrentServer, setMessages })
+function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentChannel })
 {
     const [isOpen, setIsOpen] = useState(false);
     const [channels, setChannels] = useState([])
@@ -22,8 +22,6 @@ function ChannelList({ currentServer, setCurrentServer, setMessages })
     {
         event.preventDefault();
 
-        console.log()
-
         const createdChannel = await createChannel(currentServer._id, formData);
 
         setIsOpen(false);
@@ -34,7 +32,6 @@ function ChannelList({ currentServer, setCurrentServer, setMessages })
     async function listChannels()
     {
         const serverChannels = await getAllChannelsInServer(currentServer._id);
-        console.log(serverChannels);
         
         let cs = {...currentServer};
         cs.channels = serverChannels.data;
@@ -43,8 +40,8 @@ function ChannelList({ currentServer, setCurrentServer, setMessages })
     
     function selectChannel(channel)
     {
-        //setMessages();
-        console.log(channel.messages)
+        setMessages(channel.messages);
+        setCurrentChannel(channel);
     }
 
     return (
