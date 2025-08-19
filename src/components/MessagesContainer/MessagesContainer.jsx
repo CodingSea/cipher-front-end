@@ -20,16 +20,17 @@ function MessagesContainer(){
     return (
         <div className='messagesContainer'>
             <p>MessagesContainer</p> 
+            
             {
                 friendsList.map((friend,index)=>{
+                    console.log("FRIEND: ", friend)
                     return (<>
                         <div key={index} onMouseOver={()=>{setShowBtn(true)}}  onMouseLeave={()=>{setShowBtn(false)}} >
                             
-                            <p>{friend.username}</p>
+                            <p>USERNAME: {friend.username}</p>
                             {
                                 showBtn
                                 ?<>
-                                <button/>{/* here will be the Update btn */}
                                 <button/>{/* here will be the delete btn */}
                                 </>
                                 :
