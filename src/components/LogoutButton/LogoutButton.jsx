@@ -6,7 +6,7 @@ function LogoutButton({ onLogout }) {
   const handleLogout = () => {
     localStorage.removeItem('token')
     onLogout()
-    navigate('/login')
+    navigate('/auth/login')
   }
 
   return (

@@ -32,17 +32,22 @@ function SignUp() {
         value={username}
         onChange={event => setUsername(event.target.value)}
       />
+      <label htmlFor="email">Email: </label>
       <input 
+        name='email'
         placeholder="email"
         type="email"
         value={email}
         onChange={event => setEmail(event.target.value)}
       />
+      <label htmlFor="password">Password: </label>
       <input 
+      name='password'
         placeholder="Password"
         type="password"
         value={password}
         onChange={event => setPassword(event.target.value)}
+        min={6}
       />
       <button type="submit">Sign Up</button>
     </form>

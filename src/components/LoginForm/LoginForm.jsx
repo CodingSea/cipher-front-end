@@ -17,19 +17,23 @@ function LoginForm({ onLogin }) {
       onLogin(res.data.token)
       navigate('/home')
     } catch (err) {
-      alert(err.response?.data?.message || 'Login failed')
+      console.log(err)
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
+      <label htmlFor="Username">Username:</label>
       <input 
+        name='Username'
         placeholder="Username"
         value={username}
         onChange={event => setUsername(event.target.value)}
       />
+      <label htmlFor="password">Password: </label>
       <input 
+        name='password'
         placeholder="Password"
         type="password"
         value={password}

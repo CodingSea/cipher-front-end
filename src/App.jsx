@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./App.css";
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import SideContainer from './components/SideContainer/SideContainer';
 import MessagesContainer from './components/MessagesContainer/MessagesContainer';
