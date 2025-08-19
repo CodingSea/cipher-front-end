@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Tabs from "../Tabs/Tabs";
 import ChannelList from "../ChannelList/ChannelList";
-import { getAllServers } from '../../../lib/serverApi';
+import { getAllServers, getAllUserServers } from '../../../lib/serverApi';
+import { jwtDecode } from 'jwt-decode';
 
 function SideContainer()
 {
@@ -10,8 +11,11 @@ function SideContainer()
 
     async function listServers()
     {
-        const serverList = await getAllServers();
-        setServers(serverList.data);
+        const token = localStorage.getItem("token");
+        const userId = jwtDecode(token);
+        console.log(`Token ID: ${userId.id}`)
+        const serverList = await getAllUserServers(userId.id);
+        setServers(serverList);
     }
 
     return (
