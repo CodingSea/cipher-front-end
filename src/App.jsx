@@ -11,6 +11,8 @@ import SignUp from './components/SignupForm/SignupForm';
 
 function App()
 {
+  const [messages, setMessages] = useState([{}]);
+
   const [token, setToken] = useState(localStorage.getItem('token'))
 
   function handleLogin(newToken)
@@ -35,7 +37,13 @@ function App()
         <Routes>
           <Route path="/auth/login" element={ <LoginForm onLogin={ handleLogin } /> } />
           <Route path="/auth/signup" element={ <SignUp /> } />
-          <Route path='/Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
+          <Route path='/Home' element={
+            <ProtectedRoute>
+              <div className='main'>
+                <SideContainer setMessages={ setMessages } />
+                <MessagesContainer messages={ messages } setMessages={ setMessages } />
+              </div>
+            </ProtectedRoute> } />
         </Routes>
       </BrowserRouter>
 
