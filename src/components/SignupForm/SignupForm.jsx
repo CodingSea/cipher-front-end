@@ -5,6 +5,7 @@ import axios from 'axios'
 function SignUp() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("")
   const navigate = useNavigate()
 
   const handleSubmit = async event => {
@@ -12,10 +13,11 @@ function SignUp() {
     try {
       await axios.post('http://localhost:3000/auth/signup', {
         username,
-        password
+        password,
+        email
       })
-      alert('User registered, please login')
-      navigate('/login')
+      
+      navigate('/auth/login')
     } catch (err) {
       console.log(err)
     }
@@ -24,10 +26,17 @@ function SignUp() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Sign Up</h2>
-      <input 
+      <label htmlFor="username">Username: </label>
+      <input name='username'
         placeholder="Username"
         value={username}
         onChange={event => setUsername(event.target.value)}
+      />
+      <input 
+        placeholder="email"
+        type="email"
+        value={email}
+        onChange={event => setEmail(event.target.value)}
       />
       <input 
         placeholder="Password"
