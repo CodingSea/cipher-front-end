@@ -11,10 +11,7 @@ function SideContainer()
 
     async function listServers()
     {
-        const token = localStorage.getItem("token");
-        const userId = jwtDecode(token);
-        console.log(`Token ID: ${userId.id}`)
-        const serverList = await getAllUserServers(userId.id);
+        const serverList = await getAllUserServers();
         setServers(serverList);
     }
 
