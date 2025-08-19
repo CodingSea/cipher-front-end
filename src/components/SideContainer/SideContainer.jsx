@@ -4,7 +4,7 @@ import ChannelList from "../ChannelList/ChannelList";
 import { getAllServers, getAllUserServers } from '../../../lib/serverApi';
 import { jwtDecode } from 'jwt-decode';
 
-function SideContainer()
+function SideContainer({ setMessages })
 {
     const [servers, setServers] = useState([]);
     const [currentServer, setCurrentServer] = useState();
@@ -17,8 +17,8 @@ function SideContainer()
 
     return (
         <div className='sideContainer'>
-            <Tabs setCurrentServer={setCurrentServer} servers={servers} setServers={setServers} listServers={listServers} />
-            <ChannelList currentServer={currentServer} setCurrentServer={setCurrentServer} listServers={listServers} />
+            <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
+            <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessage={setMessages} />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Popup from 'reactjs-popup';
 import { createChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
 
-function ChannelList({ currentServer, setCurrentServer, setServers, listServers })
+function ChannelList({ currentServer, setCurrentServer, setMessages })
 {
     const [isOpen, setIsOpen] = useState(false);
     const [channels, setChannels] = useState([])
@@ -41,7 +41,11 @@ function ChannelList({ currentServer, setCurrentServer, setServers, listServers 
         setCurrentServer(cs);
     }
     
-
+    function selectChannel(channel)
+    {
+        //setMessages();
+        console.log(channel.messages)
+    }
 
     return (
         <div className='channelList'>
@@ -74,7 +78,7 @@ function ChannelList({ currentServer, setCurrentServer, setServers, listServers 
                     {
                         return (
                             <div key={ index } className='serverCard'>
-                                <button>{ channel.title }</button>
+                                <button onClick={() => selectChannel(channel)}>{ channel.title }</button>
                             </div>
                         )
                     })
