@@ -99,7 +99,7 @@
     background-color: #004464;
 }
 
-.message-header
+.messageHeader
 {
     display: flex;
     justify-content: space-between;
@@ -107,7 +107,7 @@
     color: #46ffa3;
 }
 
-.sender
+.user
 {
     font-weight: bold;
 }
@@ -117,7 +117,7 @@
     color: #999;
 }
 
-.message-text
+.messageText
 {
     margin-top: 5px;
 }

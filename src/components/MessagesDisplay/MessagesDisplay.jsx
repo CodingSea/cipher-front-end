@@ -25,8 +25,6 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel 
 
     return (
         <div>
-            <p>MessagesDisplay</p>
-
             {
                 msgs.length
                     ?
@@ -34,11 +32,11 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel 
                     {
                         return (
                             <div key={ index } className="message">
-                                <div className="message-header">
-                                    <span className="sender">{ message.user.username }</span>
+                                <div className="messageHeader">
+                                    <span className="user">{ message.user.username }</span>
                                     <span className="timestamp">{ new Date(message.createdAt).toLocaleTimeString() }</span>
                                 </div>
-                                <p className="message-text">{ message.text }</p>
+                                <p className="messageText">{ message.text }</p>
                             </div>
                         )
                     })
