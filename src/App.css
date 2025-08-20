@@ -76,10 +76,18 @@
 
 .serverCard
 {
-  
+  display: grid;
+  grid-template-columns: 70px 70px 70px;
+  gap: 10px;
+  justify-content: space-between;
   border-radius: 0.5em;
   padding: 5px;
   margin: 0.5em;
+}
+
+.serverCard button
+{
+  overflow: hidden;
 }
 
 /* The following code is taken from the internet */
@@ -141,4 +149,7 @@
 .messageDisplay
 {
   height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }

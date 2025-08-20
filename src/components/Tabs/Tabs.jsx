@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
-import { getAllServers, createServer } from '../../../lib/serverApi';
+import { getAllServers, createServer, deleteServer } from '../../../lib/serverApi'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 function Tabs({ setCurrentServer, servers, listServers })
 {
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState
-    (
-        {
-            title: ""
-        }
-    )
+        (
+            {
+                title: ""
+            }
+        )
 
     function handleChange(event)
     {
@@ -21,15 +24,33 @@ function Tabs({ setCurrentServer, servers, listServers })
     {
         event.preventDefault();
 
-        const createdServer = await createServer(formData);
-        setIsOpen(false);
+        try
+        {
+            const createdServer = await createServer(formData);
+            setIsOpen(false);
 
-        listServers();
+            listServers();
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
     }
 
     function selectServerClick(server)
     {
         setCurrentServer(server);
+    }
+
+    async function deleteServerClick(server)
+    {
+        await deleteServer(server._id);
+        listServers();
+    }
+    
+    function openUpdateForm(server)
+    {
+        listServers();
     }
 
     useEffect(() =>
@@ -41,9 +62,9 @@ function Tabs({ setCurrentServer, servers, listServers })
         <div className='tabsContainer'>
             <h3>Tabs</h3>
 
-            <button onClick={() => setIsOpen(true)}>+</button>
+            <button onClick={ () => setIsOpen(true) }>+</button>
 
-            <Popup open={isOpen}
+            <Popup open={ isOpen }
                 modal nested>
                 <form className='newServerForm' onSubmit={ handleCreateServer }>
                     <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
@@ -60,7 +81,9 @@ function Tabs({ setCurrentServer, servers, listServers })
                     {
                         return (
                             <div key={ index } className='serverCard'>
-                                <button onClick={() => selectServerClick(server)}>{ server.title }</button>
+                                <button onClick={ () => selectServerClick(server) }>{ server.title }</button>
+                                <button onClick={ () => openUpdateForm(server) }><FontAwesomeIcon icon={faPenToSquare} /></button>
+                                <button onClick={ () => deleteServerClick(server) }><FontAwesomeIcon icon={faTrash} style={{color:"red"}} /></button>
                             </div>
                         )
                     })
