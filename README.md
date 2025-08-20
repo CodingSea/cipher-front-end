@@ -21,8 +21,6 @@ The idea of this site if to create servers and add users to chat.
 * multer
 * bcrypt.js
 * dotenv
-* ejs
-* method-override
 * MongoDB
 * mongoose
 * morgan
@@ -48,7 +46,7 @@ SECRET= secret key
 
 **Blockers include:**
 
-* we need more time to applying the ideas planed for porject.
+* we need more time to applying the ideas planed for porject(the web socket).
 
 
 
