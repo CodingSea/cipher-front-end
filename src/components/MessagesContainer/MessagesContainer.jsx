@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 import React from 'react'
 import Settings from '../Settings/Settings'
 import { jwtDecode } from 'jwt-decode'
 import { useState, useEffect } from 'react';
 import { getUser } from '../../../lib/userApi';
 import DeleteBtn from '../DeleteBtn/DeleteBtn';
+=======
+import React, { useEffect, useState } from 'react';
+import Settings from '../Settings/Settings';
+import MessagesDisplay from '../MessagesDisplay/MessagesDisplay';
+import TextInput from "../TextInput/TextInput";
+>>>>>>> main
 
-function MessagesContainer()
+function MessagesContainer({ messages, setMessages, currentServer, setCurrentServer, currentChannel })
 {
+<<<<<<< HEAD
    
     const [friendsList, setFriendsList] = useState([]);
     const [showBtn, setShowBtn] = useState(null);
@@ -50,8 +58,15 @@ function MessagesContainer()
                     </>)
                 })
             }
+=======
+
+    return (
+        <div className='messagesContainer'>
+            <MessagesDisplay messages={ messages } setMessages={ setMessages } currentServer={ currentServer } currentChannel={ currentChannel } />
+            <TextInput />
+>>>>>>> main
         </div>
     )
 }
 
-export default MessagesContainer
+export default MessagesContainer;

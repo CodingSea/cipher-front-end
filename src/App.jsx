@@ -11,6 +11,10 @@ import SignUp from './components/SignupForm/SignupForm';
 
 function App()
 {
+  const [messages, setMessages] = useState([]);
+  const [currentServer, setCurrentServer] = useState();
+  const [currentChannel, setCurrentChannel] = useState();
+
   const [token, setToken] = useState(localStorage.getItem('token'))
 
   function handleLogin(newToken)
@@ -26,7 +30,6 @@ function App()
   if (token)
   {
     const decodedToken = jwtDecode(token)
-    console.log(decodedToken)
   }
 
   return (
@@ -36,7 +39,13 @@ function App()
         <Routes>
           <Route path="/auth/login" element={ <LoginForm onLogin={ handleLogin } /> } />
           <Route path="/auth/signup" element={ <SignUp /> } />
-          <Route path='Home' element={<ProtectedRoute><div className='main'><SideContainer /><MessagesContainer /></div></ProtectedRoute>}/>
+          <Route path='/Home' element={
+            <ProtectedRoute>
+              <div className='main'>
+                <SideContainer setMessages={ setMessages } currentServer={currentServer} setCurrentServer={setCurrentServer} setCurrentChannel={setCurrentChannel} />
+                <MessagesContainer messages={ messages } setMessages={ setMessages } currentServer={currentServer} currentChannel={currentChannel}  />
+              </div>
+            </ProtectedRoute> } />
         </Routes>
       </BrowserRouter>
 

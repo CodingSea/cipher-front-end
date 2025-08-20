@@ -45,12 +45,14 @@
 
 .messagesContainer
 {
-  height: 100vh;
+  height: 90vh;
 
   border: 1px solid white;
 
   padding: 1em;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .tabsContainer, .channelList
@@ -78,4 +80,65 @@
   border-radius: 0.5em;
   padding: 5px;
   margin: 0.5em;
+}
+
+/* The following code is taken from the internet */
+.messagesDisplay
+{
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message
+{
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #004464;
+}
+
+.messageHeader
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #46ffa3;
+}
+
+.user
+{
+    font-weight: bold;
+}
+
+.timestamp
+{
+    color: #999;
+}
+
+.messageText
+{
+    margin-top: 5px;
+}
+
+/* end of internet code */
+
+.textInput
+{
+  display: flex;
+  width: 100%;
+  gap: 1em;
+}
+
+.textInput input
+{
+  width: 100%;
+}
+
+.messageDisplay
+{
+  height: 100%;
 }
