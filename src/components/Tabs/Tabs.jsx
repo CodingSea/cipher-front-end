@@ -6,11 +6,11 @@ function Tabs({ setCurrentServer, servers, listServers })
 {
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState
-    (
-        {
-            title: ""
-        }
-    )
+        (
+            {
+                title: ""
+            }
+        )
 
     function handleChange(event)
     {
@@ -21,10 +21,17 @@ function Tabs({ setCurrentServer, servers, listServers })
     {
         event.preventDefault();
 
-        const createdServer = await createServer(formData);
-        setIsOpen(false);
+        try
+        {
+            const createdServer = await createServer(formData);
+            setIsOpen(false);
 
-        listServers();
+            listServers();
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
     }
 
     function selectServerClick(server)
@@ -41,9 +48,9 @@ function Tabs({ setCurrentServer, servers, listServers })
         <div className='tabsContainer'>
             <h3>Tabs</h3>
 
-            <button onClick={() => setIsOpen(true)}>+</button>
+            <button onClick={ () => setIsOpen(true) }>+</button>
 
-            <Popup open={isOpen}
+            <Popup open={ isOpen }
                 modal nested>
                 <form className='newServerForm' onSubmit={ handleCreateServer }>
                     <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
@@ -60,7 +67,7 @@ function Tabs({ setCurrentServer, servers, listServers })
                     {
                         return (
                             <div key={ index } className='serverCard'>
-                                <button onClick={() => selectServerClick(server)}>{ server.title }</button>
+                                <button onClick={ () => selectServerClick(server) }>{ server.title }</button>
                             </div>
                         )
                     })

@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { getAllMessagesInChannel } from '../../../lib/messageApi';
+import socketIOClient from 'socket.io-client';
 
 function MessagesDisplay({ messages, setMessages, currentServer, currentChannel })
 {
     const [msgs, setMsgs] = useState([]);
+    const socketio = socketIOClient(import.meta.env.VITE_BACKEND_URL);
 
-    async function getAllChannelMessages()
+    async function getAllChannelMessages(m)
     {
         if (currentServer == null || currentServer == null) return;
 
-        const allMessages = await getAllMessagesInChannel(currentServer._id, currentChannel._id);
+        const allMessages = m.filter((x) => 
+        {
+            return messages.includes(x._id);
+        });
+        console.log(allMessages);
 
-        setMsgs(allMessages.data);
-        if(msgs[0])
+
+        setMsgs(allMessages);
+        if (msgs[0])
         {
             console.log(msgs[0].user);
         }
@@ -20,8 +27,16 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel 
 
     useEffect(() =>
     {
-        getAllChannelMessages();
+        //getAllChannelMessages();
     }, [messages])
+
+    useEffect(() =>
+    {
+        socketio.on("Message", (m) =>
+        {
+            getAllChannelMessages(m);
+        })
+    });
 
     return (
         <div className='messageDisplay'>
