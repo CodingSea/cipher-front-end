@@ -50,6 +50,7 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
     async function deleteChannelClick(channel)
     {
         await deleteChannel(currentServer._id, channel._id);
+        listChannels();
     }
 
     return (
