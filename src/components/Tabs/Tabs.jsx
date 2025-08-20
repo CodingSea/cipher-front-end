@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { getAllServers, createServer, deleteServer } from '../../../lib/serverApi'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 function Tabs({ setCurrentServer, servers, listServers })
 {
@@ -44,6 +47,11 @@ function Tabs({ setCurrentServer, servers, listServers })
         await deleteServer(server._id);
         listServers();
     }
+    
+    function openUpdateForm(server)
+    {
+        listServers();
+    }
 
     useEffect(() =>
     {
@@ -74,7 +82,8 @@ function Tabs({ setCurrentServer, servers, listServers })
                         return (
                             <div key={ index } className='serverCard'>
                                 <button onClick={ () => selectServerClick(server) }>{ server.title }</button>
-                                <button onClick={ () => deleteServerClick(server) }><img src='../../public/trash-solid-full.svg' /></button>
+                                <button onClick={ () => openUpdateForm(server) }><FontAwesomeIcon icon={faPenToSquare} /></button>
+                                <button onClick={ () => deleteServerClick(server) }><FontAwesomeIcon icon={faTrash} style={{color:"red"}} /></button>
                             </div>
                         )
                     })

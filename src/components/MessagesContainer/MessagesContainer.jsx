@@ -8,19 +8,13 @@ function MessagesContainer({ messages, setMessages, currentServer, setCurrentSer
 {
     const [chatMessages, setChatMessages] = useState([]);
 
-    function addMessage(message)
-    {
-
-        //const newMessages = {...messages, text:message, user: userData.id}
-    }
-
     return (
         <div className='messagesContainer'>
             <MessagesDisplay messages={ messages } setMessages={ setMessages } currentServer={ currentServer } currentChannel={ currentChannel } setChatMessages={ setChatMessages } />
             {
                 currentServer != null && currentChannel != null
                 ?
-                <TextInput messages={ messages } setMessages={ setMessages } chatMessages={ chatMessages } setChatMessages={ setChatMessages } addMessage={ addMessage } currentServer={ currentServer } currentChannel={ currentChannel } />
+                <TextInput messages={ messages } setMessages={ setMessages } chatMessages={ chatMessages } setChatMessages={ setChatMessages } currentServer={ currentServer } currentChannel={ currentChannel } />
                 :
                 null
             }

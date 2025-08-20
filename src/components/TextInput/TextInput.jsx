@@ -4,7 +4,7 @@ import { getUser } from '../../../lib/userApi';
 import { jwtDecode } from 'jwt-decode';
 import socketIOClient from 'socket.io-client';
 
-function TextInput({ addMessage, currentServer, currentChannel, messages, setMessages })
+function TextInput({ currentServer, currentChannel, messages, setMessages })
 {
     const [message, setMessage] = useState({text:"", user: ""});
     const socketio = socketIOClient(import.meta.env.VITE_BACKEND_URL);
