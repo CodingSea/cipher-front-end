@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Popup from 'reactjs-popup';
 import { createChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentChannel })
 {
@@ -32,12 +35,12 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
     async function listChannels()
     {
         const serverChannels = await getAllChannelsInServer(currentServer._id);
-        
-        let cs = {...currentServer};
+
+        let cs = { ...currentServer };
         cs.channels = serverChannels.data;
         setCurrentServer(cs);
     }
-    
+
     function selectChannel(channel)
     {
         setMessages(channel.messages);
@@ -51,8 +54,8 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
                     ?
                     <>
                         <h3>{ currentServer.title }</h3>
-                        <button onClick={() => setIsOpen(true)}>+</button>
-                        <Popup open={isOpen}
+                        <button onClick={ () => setIsOpen(true) }>+</button>
+                        <Popup open={ isOpen }
                             modal nested>
                             <form className='newServerForm' onSubmit={ handleCreateChannel }>
                                 <input placeholder='Channel Name' name='title' type='text' onChange={ handleChange } />
@@ -75,7 +78,9 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
                     {
                         return (
                             <div key={ index } className='serverCard'>
-                                <button onClick={() => selectChannel(channel)}>{ channel.title }</button>
+                                <button onClick={ () => selectChannel(channel) }>{ channel.title }</button>
+                                <button onClick={ () => selectChannel(channel) }><FontAwesomeIcon icon={ faPenToSquare } /></button>
+                                <button onClick={ () => selectChannel(channel) }><FontAwesomeIcon icon={ faTrash } style={ { color: "red" } } /></button>
                             </div>
                         )
                     })

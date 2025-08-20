@@ -12,7 +12,6 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
     {
         const serverList = await getAllUserServers();
         setServers(serverList);
-        setMessages(["ss", "ss"])
     }
 
     function updateMessages(messages)
