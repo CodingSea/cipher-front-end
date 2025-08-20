@@ -42,7 +42,7 @@ function App()
           <Route path='/Home' element={
             <ProtectedRoute>
               <div className='main'>
-                <SideContainer setMessages={ setMessages } currentServer={currentServer} setCurrentServer={setCurrentServer} setCurrentChannel={setCurrentChannel} />
+                <SideContainer setMessages={ setMessages } currentServer={currentServer} setCurrentServer={setCurrentServer} currentChannel={currentChannel} setCurrentChannel={setCurrentChannel} />
                 <MessagesContainer messages={ messages } setMessages={ setMessages } currentServer={currentServer} currentChannel={currentChannel}  />
               </div>
             </ProtectedRoute> } />
