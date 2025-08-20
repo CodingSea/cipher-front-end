@@ -1,7 +1,12 @@
 import React from 'react'
 
-function TextInput()
+function TextInput({ chatMessages, setChatMessages })
 {
+    function addMessage()
+    {
+
+    }
+
     return (
         <div className='textInput'>
             <input type='text' name='text' placeholder='Enter text to talk to other users' />

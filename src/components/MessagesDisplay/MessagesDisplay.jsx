@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { getAllMessagesInChannel } from '../../../lib/messageApi';
 import socketIOClient from 'socket.io-client';
+import { getUser } from '../../../lib/userApi';
 
-function MessagesDisplay({ messages, setMessages, currentServer, currentChannel })
+function MessagesDisplay({ messages, setMessages, currentServer, currentChannel, setChatMessages })
 {
     const [msgs, setMsgs] = useState([]);
     const socketio = socketIOClient(import.meta.env.VITE_BACKEND_URL);
@@ -15,20 +16,13 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel 
         {
             return messages.includes(x._id);
         });
-        console.log(allMessages);
+
 
 
         setMsgs(allMessages);
-        if (msgs[0])
-        {
-            console.log(msgs[0].user);
-        }
+        setChatMessages(allMessages);
+        //console.log(allMessages);
     }
-
-    useEffect(() =>
-    {
-        //getAllChannelMessages();
-    }, [messages])
 
     useEffect(() =>
     {
