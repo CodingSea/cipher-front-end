@@ -21,7 +21,7 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
 
     return (
         <div className='sideContainer'>
-            <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
+            <Tabs currentServer={currentServer} setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
             <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessages={ setMessages } setCurrentChannel={ setCurrentChannel } />
         </div>
     )
