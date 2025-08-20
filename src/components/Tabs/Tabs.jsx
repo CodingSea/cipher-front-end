@@ -53,13 +53,13 @@ function Tabs({ setCurrentServer, servers, listServers })
                     <button type='submit'>Make Server</button>
                 </form>
             </Popup>
-            <Popup open={isOpen}
+            <Popup open={isEdited}
                 modal nested>
-                <form className='newServerForm' onSubmit={ handleCreateServer }>
+                <form className='EditedServerForm' onSubmit={ handleCreateServer }>
                     <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
                     <br />
                     <br />
-                    <button type='submit'>Make Server</button>
+                    <button type='submit'>Edit Server</button>
                 </form>
             </Popup>
 

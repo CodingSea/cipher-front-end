@@ -7,12 +7,15 @@ import FriendList from '../FriendsList/FriendsList';
 function SideContainer({ setMessages, currentServer, setCurrentServer, setCurrentChannel })
 {
     const [servers, setServers] = useState([]);
-
+    const [show,setShow]= useState(true)
     async function listServers()
     {
         const serverList = await getAllUserServers();
         setServers(serverList);
         setMessages(["ss", "ss"])
+    }
+    function handleShow(){
+      setShow(!show)
     }
 
     function updateMessages(messages)
@@ -22,9 +25,16 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
 
     return (
         <div className='sideContainer'>
-            <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
             <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessages={ setMessages } setCurrentChannel={ setCurrentChannel } />
+            <view onClick={handleShow}>Show Friends</view>
+           { show
+            ?
             <FriendList/>
+            :
+            <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
+            }
+            
+
         </div>
     )
 }
