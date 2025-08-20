@@ -6,7 +6,7 @@ import socketIOClient from 'socket.io-client';
 
 function TextInput({ addMessage, currentServer, currentChannel, messages, setMessages })
 {
-    const [message, setMessage] = useState({text:""});
+    const [message, setMessage] = useState({text:"", user: ""});
     const socketio = socketIOClient(import.meta.env.VITE_BACKEND_URL);
 
 
@@ -22,10 +22,11 @@ function TextInput({ addMessage, currentServer, currentChannel, messages, setMes
         const token = localStorage.getItem("token");
         const userData = jwtDecode(token);
         const u = await getUser(userData.id);
-        const m ={...message, user: u}
-        //const message = await createChannelMessage(currentServer._id, currentChannel._id, m);
-        setMessages([...messages, m.user._id]);
-        console.log(messages);
+        const m = {...message, user: u._id}
+        console.log(m);
+        const mgs = await createChannelMessage(currentServer._id, currentChannel._id, m);
+        console.log(mgs)
+        setMessages([...messages, mgs.data._id]);
         sendToSocket(messages);
         setMessage({text: ""});
     }

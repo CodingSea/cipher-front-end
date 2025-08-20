@@ -17,7 +17,7 @@ function MessagesContainer({ messages, setMessages, currentServer, setCurrentSer
     return (
         <div className='messagesContainer'>
             <MessagesDisplay messages={ messages } setMessages={ setMessages } currentServer={ currentServer } currentChannel={ currentChannel } setChatMessages={ setChatMessages } />
-            <TextInput messages={ messages } setMessages={ setMessages } chatMessages={ chatMessages } setChatMessages={ setChatMessages } addMessage={ addMessage } />
+            <TextInput messages={ messages } setMessages={ setMessages } chatMessages={ chatMessages } setChatMessages={ setChatMessages } addMessage={ addMessage } currentServer={ currentServer } currentChannel={ currentChannel } />
         </div>
     )
 }
