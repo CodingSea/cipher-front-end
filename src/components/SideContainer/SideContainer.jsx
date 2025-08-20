@@ -3,7 +3,7 @@ import Tabs from "../Tabs/Tabs";
 import ChannelList from "../ChannelList/ChannelList";
 import { getAllServers, getAllUserServers } from '../../../lib/serverApi';
 import { jwtDecode } from 'jwt-decode';
-
+import FriendList from '../FriendsList/FriendsList';
 function SideContainer({ setMessages, currentServer, setCurrentServer, setCurrentChannel })
 {
     const [servers, setServers] = useState([]);
@@ -24,6 +24,7 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
         <div className='sideContainer'>
             <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
             <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessages={ setMessages } setCurrentChannel={ setCurrentChannel } />
+            <FriendList/>
         </div>
     )
 }

@@ -39,7 +39,7 @@ const FriendList = ()=>{
                             {
                                 showBtn
                                     ? <>
-                                        <DeleteBtn />
+                                        <DeleteBtn friendId={friend._id}/>
                                     </>
                                     :
                                     null
