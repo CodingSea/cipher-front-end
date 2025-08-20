@@ -1,4 +1,4 @@
-# Snap Stream
+# Cipher
 
 ## Introduction
 
