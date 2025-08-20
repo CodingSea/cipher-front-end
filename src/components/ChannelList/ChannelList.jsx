@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Popup from 'reactjs-popup';
-import { createChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
+import { createChannel, deleteChannel, getAllChannelsInServer, } from '../../../lib/serverApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
@@ -47,6 +47,11 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
         setCurrentChannel(channel);
     }
 
+    async function deleteChannelClick(channel)
+    {
+        await deleteChannel(currentServer._id, channel._id);
+    }
+
     return (
         <div className='channelList'>
             {
@@ -80,7 +85,7 @@ function ChannelList({ currentServer, setCurrentServer, setMessages, setCurrentC
                             <div key={ index } className='serverCard'>
                                 <button onClick={ () => selectChannel(channel) }>{ channel.title }</button>
                                 <button onClick={ () => selectChannel(channel) }><FontAwesomeIcon icon={ faPenToSquare } /></button>
-                                <button onClick={ () => selectChannel(channel) }><FontAwesomeIcon icon={ faTrash } style={ { color: "red" } } /></button>
+                                <button onClick={ () => deleteChannelClick(channel) }><FontAwesomeIcon icon={ faTrash } style={ { color: "red" } } /></button>
                             </div>
                         )
                     })

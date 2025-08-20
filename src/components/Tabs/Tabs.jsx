@@ -69,6 +69,7 @@ function Tabs({ setCurrentServer, servers, listServers, currentServer })
     function openUpdateForm(server)
     {
         selectServerClick(server);
+        formData.title = server.title;
         setIsEditorOpen(true);
     }
 
@@ -96,7 +97,7 @@ function Tabs({ setCurrentServer, servers, listServers, currentServer })
             <Popup open={ isEditorOpen }
                 modal nested>
                 <form className='newServerForm' onSubmit={ handleUpdateServer }>
-                    <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
+                    <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } value={formData.title} />
                     <br />
                     <br />
                     <button type='submit'>Update Server</button>
