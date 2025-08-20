@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
-import { getAllServers, createServer } from '../../../lib/serverApi';
+import { getAllServers, createServer, deleteServer } from '../../../lib/serverApi'; 
 
 function Tabs({ setCurrentServer, servers, listServers })
 {
@@ -39,6 +39,12 @@ function Tabs({ setCurrentServer, servers, listServers })
         setCurrentServer(server);
     }
 
+    async function deleteServerClick(server)
+    {
+        await deleteServer(server._id);
+        listServers();
+    }
+
     useEffect(() =>
     {
         listServers();
@@ -68,6 +74,7 @@ function Tabs({ setCurrentServer, servers, listServers })
                         return (
                             <div key={ index } className='serverCard'>
                                 <button onClick={ () => selectServerClick(server) }>{ server.title }</button>
+                                <button onClick={ () => deleteServerClick(server) }><img src='../../public/trash-solid-full.svg' /></button>
                             </div>
                         )
                     })
