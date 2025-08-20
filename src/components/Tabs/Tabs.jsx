@@ -5,6 +5,7 @@ import { getAllServers, createServer } from '../../../lib/serverApi';
 function Tabs({ setCurrentServer, servers, listServers })
 {
     const [isOpen, setIsOpen] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
     const [formData, setFormData] = useState
     (
         {
@@ -43,6 +44,15 @@ function Tabs({ setCurrentServer, servers, listServers })
 
             <button onClick={() => setIsOpen(true)}>+</button>
 
+            <Popup open={isOpen}
+                modal nested>
+                <form className='newServerForm' onSubmit={ handleCreateServer }>
+                    <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } />
+                    <br />
+                    <br />
+                    <button type='submit'>Make Server</button>
+                </form>
+            </Popup>
             <Popup open={isOpen}
                 modal nested>
                 <form className='newServerForm' onSubmit={ handleCreateServer }>
