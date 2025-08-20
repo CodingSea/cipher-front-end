@@ -21,7 +21,6 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel,
 
         setMsgs(allMessages);
         setChatMessages(allMessages);
-        //console.log(allMessages);
     }
 
     useEffect(() =>
@@ -30,7 +29,7 @@ function MessagesDisplay({ messages, setMessages, currentServer, currentChannel,
         {
             getAllChannelMessages(m);
         })
-    });
+    }, [messages]);
 
     return (
         <div className='messageDisplay'>
