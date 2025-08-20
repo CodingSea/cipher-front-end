@@ -4,7 +4,7 @@ import ChannelList from "../ChannelList/ChannelList";
 import { getAllServers, getAllUserServers } from '../../../lib/serverApi';
 import { jwtDecode } from 'jwt-decode';
 
-function SideContainer({ setMessages, currentServer, setCurrentServer, setCurrentChannel })
+function SideContainer({ setMessages, currentServer, setCurrentServer, currentChannel, setCurrentChannel })
 {
     const [servers, setServers] = useState([]);
 
@@ -12,7 +12,6 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
     {
         const serverList = await getAllUserServers();
         setServers(serverList);
-        setMessages(["ss", "ss"])
     }
 
     function updateMessages(messages)
@@ -22,8 +21,8 @@ function SideContainer({ setMessages, currentServer, setCurrentServer, setCurren
 
     return (
         <div className='sideContainer'>
-            <Tabs setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
-            <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessages={ setMessages } setCurrentChannel={ setCurrentChannel } />
+            <Tabs currentServer={currentServer} setCurrentServer={ setCurrentServer } servers={ servers } listServers={ listServers } />
+            <ChannelList currentServer={ currentServer } setCurrentServer={ setCurrentServer } setMessages={ setMessages } currentChannel={currentChannel} setCurrentChannel={ setCurrentChannel } />
         </div>
     )
 }

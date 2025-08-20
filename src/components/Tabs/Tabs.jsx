@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
-import { getAllServers, createServer, deleteServer } from '../../../lib/serverApi'; 
+import { getAllServers, createServer, deleteServer, updateServer } from '../../../lib/serverApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-function Tabs({ setCurrentServer, servers, listServers })
+function Tabs({ setCurrentServer, servers, listServers, currentServer })
 {
     const [isOpen, setIsOpen] = useState(false);
+    const [isEditorOpen, setIsEditorOpen] = useState(false);
     const [formData, setFormData] = useState
         (
             {
@@ -31,7 +32,24 @@ function Tabs({ setCurrentServer, servers, listServers })
 
             listServers();
         }
-        catch(error)
+        catch (error)
+        {
+            console.log(error);
+        }
+    }
+
+    async function handleUpdateServer(event)
+    {
+        event.preventDefault();
+
+        try
+        {
+            const updatedServer = await updateServer(currentServer._id, formData);
+            setIsEditorOpen(false);
+
+            listServers();
+        }
+        catch (error)
         {
             console.log(error);
         }
@@ -47,10 +65,12 @@ function Tabs({ setCurrentServer, servers, listServers })
         await deleteServer(server._id);
         listServers();
     }
-    
+
     function openUpdateForm(server)
     {
-        listServers();
+        selectServerClick(server);
+        formData.title = server.title;
+        setIsEditorOpen(true);
     }
 
     useEffect(() =>
@@ -74,6 +94,16 @@ function Tabs({ setCurrentServer, servers, listServers })
                 </form>
             </Popup>
 
+            <Popup open={ isEditorOpen }
+                modal nested>
+                <form className='newServerForm' onSubmit={ handleUpdateServer }>
+                    <input placeholder='Server Name' name='title' type='text' onChange={ handleChange } value={formData.title} />
+                    <br />
+                    <br />
+                    <button type='submit'>Update Server</button>
+                </form>
+            </Popup>
+
             {
                 servers.length
                     ?
@@ -81,9 +111,9 @@ function Tabs({ setCurrentServer, servers, listServers })
                     {
                         return (
                             <div key={ index } className='serverCard'>
-                                <button onClick={ () => selectServerClick(server) }>{ server.title }</button>
-                                <button onClick={ () => openUpdateForm(server) }><FontAwesomeIcon icon={faPenToSquare} /></button>
-                                <button onClick={ () => deleteServerClick(server) }><FontAwesomeIcon icon={faTrash} style={{color:"red"}} /></button>
+                                <button onClick={ () => selectServerClick(server) } className='btnText'>{ server.title }</button>
+                                <button onClick={ () => openUpdateForm(server) }><FontAwesomeIcon icon={ faPenToSquare } /></button>
+                                <button onClick={ () => deleteServerClick(server) }><FontAwesomeIcon icon={ faTrash } style={ { color: "red" } } /></button>
                             </div>
                         )
                     })

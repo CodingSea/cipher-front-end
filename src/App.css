@@ -40,7 +40,7 @@
   padding: 1em;
   display: flex;
   justify-content: center;
-  max-width: 60vh;
+  max-width: 90vh;
 }
 
 .messagesContainer
@@ -152,4 +152,9 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.btnText
+{
+  text-align: start;
 }
