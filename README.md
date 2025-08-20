@@ -55,8 +55,8 @@ SECRET= secret key
 
 # Top contributors:
 
-<a href="https://github.com/CodingSea"></a>
-<a href="https://github.com/HassanAbbas107"></a>
+<a href="https://github.com/CodingSea">Fahad</a>
+<a href="https://github.com/HassanAbbas107">Hassan</a>
 ## In Conclusion
 
 this was a fun project with plenty of learning opportunities.
