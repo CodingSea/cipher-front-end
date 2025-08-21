@@ -6,7 +6,7 @@ This is a web-based implementation of an Discord clone. Developed using HTML, CS
 
 ## Project Brief
 
-The idea of this site if to create servers and add users to chat.
+The idea of this site is to be a discord clone, from creating servers to chatting with friends.
 
 
 ## Technologies
@@ -17,8 +17,7 @@ The idea of this site if to create servers and add users to chat.
 * Git
 * Node.js
 * Express.js
-*reacte
-* multer
+* reacte
 * bcrypt.js
 * dotenv
 * MongoDB
@@ -33,9 +32,7 @@ Fork this repository and follow these steps to run the site:
 * add the .env file and write this with your details:
 
 ```
-DB=Database Url
-PORT= any number
-SECRET= secret key
+VITE_BACKEND_URL=Backend URL
 ```
 
 ## Wins and Blockers
@@ -46,7 +43,8 @@ SECRET= secret key
 
 **Blockers include:**
 
-* we need more time to applying the ideas planed for porject(the web socket).
+* Could not implement websockets for a realtime messaging system
+* Due to time constraints we were unable to complete features like: friend request system, searching and joinging other servers.
 
 
 
@@ -55,6 +53,7 @@ SECRET= secret key
 
 <a href="https://github.com/CodingSea">Fahad</a>
 <a href="https://github.com/HassanAbbas107">Hassan</a>
+
 ## In Conclusion
 
 this was a fun project with plenty of learning opportunities.
